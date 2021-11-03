@@ -4,7 +4,7 @@ end
 
 Bundler.with_unbundled_env { run 'bundle install' }
 
-file 'spec/rails_helper.rb' do
+append_to_file 'spec/rails_helper.rb' do
   <<~RUBY
     \nShoulda::Matchers.configure do |config|
       config.integrate do |with|

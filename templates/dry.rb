@@ -1,4 +1,4 @@
-require 'utils'
+require_relative '../utils'
 
 puts 'Adding dry-types...'
 add_gem 'dry_types'

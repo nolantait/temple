@@ -1,4 +1,4 @@
-require 'utils'
+require_relative '../utils'
 
 puts 'Adding active job...'
 add_gem 'active_job'

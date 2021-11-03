@@ -2,11 +2,16 @@ def add_external_template(url)
   run "rails app:template LOCATION=#{url}"
 end
 
-def mixin(type, filename)
+def external_mixin(type, filename)
   source = 'https://raw.githubusercontent.com'
   branch = 'nolantait/temple/master'
   url = "#{source}/#{branch}/#{type}/#{filename}.rb"
   add_external_template url
+end
+
+def mixin(type, filename)
+  path = "#{__dir__}/#{type}/#{filename}.rb"
+  add_external_template path
 end
 
 def add_gem(filename)

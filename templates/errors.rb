@@ -1,4 +1,4 @@
-require 'utils'
+require_relative '../utils'
 
 puts 'Adding better errors...'
 add_gem 'better_errors'

@@ -1,4 +1,4 @@
-require 'utils'
+require_relative '../utils'
 
 puts 'Adding bullet...'
 add_gem 'bullet'

@@ -1,4 +1,4 @@
-require 'utils'
+require_relative '../utils'
 
 puts 'Adding high voltage...'
 add_gem 'high_voltage'

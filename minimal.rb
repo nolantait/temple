@@ -1,4 +1,4 @@
-require 'utils'
+require_relative 'utils'
 
 puts 'Mixing database...'
 add_template 'database'

@@ -1,4 +1,4 @@
-require 'utils'
+require_relative '../utils'
 
 puts 'Adding brakeman...'
 add_gem 'brakeman'

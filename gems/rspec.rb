@@ -1,4 +1,4 @@
-require 'utils'
+require_relative '../utils'
 
 gem_group :development, :test do
   gem 'rspec-rails'
