@@ -11,6 +11,8 @@ rails_command 'generate rspec:install'
 
 run 'rm -rf test'
 
+run 'touch spec/rails_helper.rb'
+
 append_file 'spec/rails_helper.rb',
             <<~RUBY
               Shoulda::Matchers.configure do |config|
