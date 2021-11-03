@@ -11,7 +11,7 @@ create_file 'config/database.yml' do
   <<~EOF
     development: &default
       adapter: postgresql
-      database: <%= app_name %>_development
+      database: #{app_name}_development
       encoding: utf8
       min_messages: warning
       pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
@@ -21,7 +21,7 @@ create_file 'config/database.yml' do
 
     test:
       <<: *default
-      database: <%= app_name %>_test
+      database: #{app_name}_test
 
     production: &deploy
       encoding: utf8
