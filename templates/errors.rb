@@ -1,22 +1,14 @@
-gem_group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
+require 'utils'
 
-Bundler.with_unbundled_env { run 'bundle install' }
+puts 'Adding better errors...'
+add_gem 'better_errors'
 
-inject_into_file 'config/routes.rb/', before: 'end' do
-  <<~EOF
-    get '404', to: 'errors#not_found'
-    get '422', to: 'errors#unacceptable'
-    get '500', to: 'errors#internal_error'
-  EOF
-end
+route "get '404', to: 'errors#not_found'"
+route "get '422', to: 'errors#unacceptable'"
+route "get '500', to: 'errors#internal_error'"
 
-run 'touch app/controllers/errors_controller.rb'
-
-inject_into_file 'app/controllers/errors_controller.rb' do
-  <<~EOF
+file 'app/controllers/errors_controller.rb' do
+  <<~CONTROLLER
     class ErrorsController < ApplicationController
       def not_found
         respond_to do |format|
@@ -36,13 +28,13 @@ inject_into_file 'app/controllers/errors_controller.rb' do
         end
       end
     end
-  EOF
+  CONTROLLER
 end
 
-run 'mkdir app/views/errors'
-run 'touch app/views/errors/not_found.html.erb'
-run 'touch app/views/errors/unacceptable.html.erb'
-run 'touch app/views/errors/internal_error.html.erb'
+file 'app/views/errors/not_found.html.erb'
+file 'app/views/errors/unacceptable.html.erb'
+file 'app/views/errors/internal_error.html.erb'
+
 run 'rm public/404.html'
 run 'rm public/422.html'
 run 'rm public/500.html'

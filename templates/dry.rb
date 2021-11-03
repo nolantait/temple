@@ -1,15 +1,10 @@
-run 'spring stop'
+require 'utils'
 
-gem 'dry-struct'
-gem 'dry-types'
-gem 'dry-initializer'
+puts 'Adding dry-types...'
+add_gem 'dry_types'
 
-create_file 'app/models/types.rb' do
-  <<~EOF
-    require "dry-types"
+puts 'Adding dry-struct...'
+add_gem 'dry_struct'
 
-    module Types
-      include Dry.Types()
-    end
-  EOF
-end
+puts 'Adding dry-initializer...'
+add_gem 'dry_initializer'

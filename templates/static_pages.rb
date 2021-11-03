@@ -1,13 +1,14 @@
-gem 'high_voltage'
+require 'utils'
 
-Bundler.with_unbundled_env { run 'bundle install' }
+puts 'Adding high voltage...'
+add_gem 'high_voltage'
 
-# Create a basic home page ready for customization
-
+# Add basic homepage
 file 'app/views/pages/home.html.erb', <<-CODE
-  <% content_for :page_title, 'Home' %>
+  <h1>Hello world.</h1>
 CODE
 
+# Add static page layout
 file 'app/views/layouts/static_page.html.erb', <<~CODE
   <!DOCTYPE html>
   <html>
@@ -29,7 +30,6 @@ CODE
 # https://github.com/thoughtbot/high_voltage#specifying-a-root-path
 # make other pages top-level routes as well
 # https://github.com/thoughtbot/high_voltage#top-level-routes
-
 initializer 'high_voltage.rb', <<-CODE
   HighVoltage.configure do |config|
     config.home_page = 'home'

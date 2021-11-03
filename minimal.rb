@@ -1,37 +1,25 @@
-def add_external_template(url)
-  run "rails app:template LOCATION=#{url}"
-end
+require 'utils'
 
-def add_template(filename)
-  add_external_template "https://raw.githubusercontent.com/nolantait/temple/master/templates/#{filename}.rb"
-end
-
-puts 'Add database configuration...'
+puts 'Mixing database...'
 add_template 'database'
 
-puts 'Adding testing with RSpec...'
+puts 'Mixing testing...'
 add_template 'testing'
 
-puts 'Adding static pages with High Voltage...'
+puts 'Mixing static pages...'
 add_template 'static_pages'
 
-puts 'Adding delayed job...'
+puts 'Mixing jobs...'
 add_template 'jobs'
 
-puts 'Add custom errors...'
+puts 'Mixing custom errors...'
 add_template 'errors'
 
-puts 'Add css gems...'
-add_template 'css'
-
-puts 'Add dryrb gems...'
+puts 'Mixing dryrb gems...'
 add_template 'dry'
 
-puts 'Add linting...'
+puts 'Mixing linting...'
 add_template 'linting'
 
-puts 'Add security gems...'
+puts 'Mixing security...'
 add_template 'security'
-
-puts 'Add forms with SimpleForm...'
-add_template 'forms'

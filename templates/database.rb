@@ -1,14 +1,11 @@
-# PG gem is added with rails bootstrap
+require 'utils'
 
-gem_group :development do
-  gem 'bullet'
-end
-
-Bundler.with_unbundled_env { run 'bundle install' }
+puts 'Adding bullet...'
+add_gem 'bullet'
 
 remove_file 'config/database.yml'
 create_file 'config/database.yml' do
-  <<~EOF
+  <<~CONFIG
     development: &default
       adapter: postgresql
       database: #{app_name}_development
@@ -29,13 +26,11 @@ create_file 'config/database.yml' do
       pool: <%= [Integer(ENV.fetch("MAX_THREADS", 5)), Integer(ENV.fetch("DB_POOL", 5))].max %>
       timeout: 5000
       url:  <%= ENV.fetch("DATABASE_URL", "") %>
-  EOF
+  CONFIG
 end
 
-run 'touch config/initializers/bullet.rb'
-
-inject_into_file 'config/initializers/bullet.rb' do
-  <<~EOF
+initializer 'bullet.rb' do
+  <<~CONFIG
     if defined? Bullet
       Bullet.enable = true
       Bullet.alert = true
@@ -43,9 +38,9 @@ inject_into_file 'config/initializers/bullet.rb' do
       Bullet.console = true
       Bullet.honeybadger = true
     end
-  EOF
+  CONFIG
 end
 
-rails_command('db:drop')
-rails_command('db:create')
-rails_command('db:migrate')
+rails_command 'db:drop'
+rails_command 'db:create'
+rails_command 'db:migrate'
