@@ -5,9 +5,23 @@ def configure_environment(rails_env, config)
     before: "\nend"
   )
 end
-
+gem 'activejob'
 gem 'delayed_job_active_record'
+
 Bundler.with_unbundled_env { run 'bundle install' }
+
+# add requre of css/application.scss && import of fontawesome-free to application.js
+create_file 'app/jobs/application_job.rb' do
+  <<~EOF
+    class ApplicationJob < ActiveJob::Base
+      # Automatically retry jobs that encountered a deadlock
+      # retry_on ActiveRecord::Deadlocked
+      # Most jobs are safe to ignore if the underlying records are no longer available
+      # discard_on ActiveJob::DeserializationError
+    end
+  EOF
+end
+
 run 'rails generate delayed_job:active_record'
 rails_command 'db:migrate'
 
