@@ -6,6 +6,9 @@ def add_template(filename)
   add_external_template "https://raw.githubusercontent.com/nolantait/temple/master/templates/#{filename}.rb"
 end
 
+puts 'Add database configuration...'
+add_template 'database'
+
 puts 'Adding testing with RSpec...'
 add_template 'testing'
 
@@ -17,9 +20,6 @@ add_template 'jobs'
 
 puts 'Add custom errors...'
 add_template 'errors'
-
-puts 'Add database configuration...'
-add_template 'database'
 
 puts 'Add css gems...'
 add_template 'css'
