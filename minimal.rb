@@ -1,5 +1,5 @@
 def add_external_template(url)
-  run "rails app:template -m #{url}"
+  run "rails app:template LOCATION=#{url}"
 end
 
 def add_template(filename)
