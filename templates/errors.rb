@@ -2,6 +2,8 @@ gem_group :development do
   gem 'better_errors'
 end
 
+Bundler.with_unbundled_env { run 'bundle install' }
+
 inject_into_file 'config/routes.rb/', before: 'end' do
   <<~EOF
     get '404', to: 'errors#not_found'
