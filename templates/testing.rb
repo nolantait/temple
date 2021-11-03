@@ -9,7 +9,7 @@ run 'bundle install'
 
 rails_command 'generate rspec:install'
 
-run 'rm -rf test' if yes?('Do you want to remove the /test directory?')
+run 'rm -rf test'
 
 append_file 'spec/rails_helper.rb',
             <<~RUBY
