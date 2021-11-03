@@ -1,5 +1,4 @@
-# Added with rails bootstrap
-# gem 'pg'
+# PG gem is added with rails bootstrap
 
 gem_group :development do
   gem 'bullet'
