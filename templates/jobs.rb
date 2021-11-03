@@ -22,11 +22,9 @@ create_file 'app/jobs/application_job.rb' do
   EOF
 end
 
-inject_into_file 'config/application.rb', after: 'require "rails"' do
-  <<~EOF
-    require "active_job/railtie"
-  EOF
-end
+gsub_file 'config/application.rb',
+          '# require "active_job/railtie"',
+          'require "active_job/railtie"'
 
 run 'rails generate delayed_job:active_record'
 rails_command 'db:migrate'
