@@ -41,11 +41,7 @@ inject_into_file 'config/initializers/bullet.rb' do
       Bullet.alert = true
       Bullet.bullet_logger = true
       Bullet.console = true
-      Bullet.growl = true
-      Bullet.rails_logger = true
       Bullet.honeybadger = true
-      Bullet.add_footer = true
-      Bullet.skip_html_injection = false
     end
   EOF
 end
