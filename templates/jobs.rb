@@ -1,5 +1,5 @@
 gem 'delayed_job_active_record'
-run 'bundle install'
+Bundler.with_unbundled_env { run 'bundle install' }
 run 'rails generate delayed_job:active_record'
 rails_command 'db:migrate'
 

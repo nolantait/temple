@@ -5,7 +5,7 @@ gem_group :development, :test do
   gem 'shoulda-matchers'
 end
 
-run 'bundle install'
+Bundler.with_unbundled_env { run 'bundle install' }
 
 rails_command 'generate rspec:install'
 

@@ -1,6 +1,6 @@
 gem 'high_voltage'
 
-run 'bundle install'
+Bundler.with_unbundled_env { run 'bundle install' }
 
 # Create a basic home page ready for customization
 

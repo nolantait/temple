@@ -5,7 +5,7 @@ gem_group :development do
   gem 'rubocop-rspec', require: false
 end
 
-run 'bundle install'
+Bundler.with_unbundled_env { run 'bundle install' }
 
 create_file '.rubocop.yml' do
   <<~YAML

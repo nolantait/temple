@@ -1,3 +1,4 @@
 gem 'aasm'
 
-run 'bundle install'
+Bundler.with_unbundled_env { run "bundle install" }
+
