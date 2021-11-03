@@ -1,3 +1,11 @@
+def configure_environment(rails_env, config)
+  inject_into_file(
+    "config/environments/#{rails_env}.rb",
+    "\n  #{config}",
+    before: "\nend"
+  )
+end
+
 gem 'delayed_job_active_record'
 Bundler.with_unbundled_env { run 'bundle install' }
 run 'rails generate delayed_job:active_record'
